@@ -7,20 +7,26 @@ public class Main {
     public static String checker(String password) {
         if (password.length() < 8) {
             if (onlyChar(password)) {
-                return "weak";
+                return " weak";
             } if (onlyDigit(password)) {
-                return "very weak";
+                return " very weak";
+            } if (password.length() > 3 && hasChar(password) &&
+                    hasDigit(password) && specialChar(password)) {
+                return " medium";
             }
         } else {
             if (hasChar(password) && hasDigit(password)) {
                 if (specialChar(password)) {
-                    return "very strong";
+                    return " very strong";
                 } else {
-                    return "strong";
+                    return " strong";
                 }
             }
+            else {
+                return " medium strong";
+            }
         }
-        return "not acceptable";
+        return "n invalid";
     }
 
     public static boolean specialChar(String password) {
@@ -80,8 +86,13 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
-        System.out.print("Enter password: ");
-        String password = console.next();
-        System.out.println("The password '" + password + "' is a " + checker(password) + " password.");
+        System.out.print("How many passwords would you like to check? ");
+        int times = console.nextInt();
+        System.out.println();
+        for (int ii = 0; ii < times; ii++) {
+            System.out.print("Enter password: ");
+            String password = console.next();
+            System.out.println("The password '" + password + "' is a" + checker(password) + " password.");
+        }
     }
 }
