@@ -8,9 +8,9 @@ public class Main {
         if (password.length() < 8) {
             if (onlyChar(password)) {
                 return " weak";
-            } if (onlyDigit(password)) {
+            } else if (onlyDigit(password)) {
                 return " very weak";
-            } if (password.length() > 3 && hasChar(password) &&
+            } else if (password.length() > 3 && hasChar(password) &&
                     hasDigit(password) && specialChar(password)) {
                 return " medium";
             }
@@ -33,7 +33,7 @@ public class Main {
         boolean specialChar = false;
         for (int ii = 0; ii < password.length(); ii++) {
             char letter = password.charAt(ii);
-            if (letter <= 47 || (letter >= 58 && letter <= 64) || (letter >= 91 && letter <= 96) || letter >= 123) {
+            if (!(Character.isLetter(letter) && Character.isDigit(letter))) {
                 specialChar = true;
             }
         }
