@@ -1,7 +1,7 @@
 package com.company;
 
 /**
- * Created by AnyaVinogradsky on 12/23/15.
+ * Created by anyav2000 on 12/23/15.
  */
 public class PasswordChecker {
 
